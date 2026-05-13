@@ -1,4 +1,10 @@
+import { useAgenda } from '../context/AgendaContext'
+
 function AgendaPage() {
+  const {
+    agenda: { conference, days, sessions, speakers, stages, tracks },
+  } = useAgenda()
+
   return (
     <section
       className="grid gap-6 rounded-[2rem] border border-line bg-surface p-6 shadow-shell sm:p-8"
@@ -15,29 +21,58 @@ function AgendaPage() {
           Agenda
         </h1>
         <p className="max-w-2xl text-base text-muted sm:text-lg">
-          React Router is active and the root path now renders the Agenda
-          placeholder inside the shared application layout.
+          Agenda data is now loaded from <code>/agenda.json</code> through a
+          typed provider at startup, ready for the list UI in the next issue.
         </p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <article className="rounded-2xl bg-brand-soft p-5">
-          <h2 className="font-display text-xl font-semibold text-ink">
-            Route shell
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-strong">
+            Days
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
+            {days.length}
           </h2>
           <p className="mt-2 text-sm text-muted">
-            The `/` route is configured and ready for agenda data and page
-            interactions in later issues.
+            {days.map((day) => day.label).join(' and ')}
           </p>
         </article>
 
         <article className="rounded-2xl border border-dashed border-line bg-surfaceAlt p-5">
-          <h2 className="font-display text-xl font-semibold text-ink">
-            Shared layout
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-strong">
+            Sessions
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
+            {sessions.length}
           </h2>
           <p className="mt-2 text-sm text-muted">
-            Header and bottom navigation stay outside the route content so
-            additional pages can plug into the same shell later.
+            Spanning {tracks.length} tracks across {stages.length} stages.
+          </p>
+        </article>
+
+        <article className="rounded-2xl border border-dashed border-line bg-surfaceAlt p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-strong">
+            Speakers
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
+            {speakers.length}
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Representative fixture set for {conference.name} in{' '}
+            {conference.city}.
+          </p>
+        </article>
+
+        <article className="rounded-2xl border border-dashed border-line bg-surfaceAlt p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-strong">
+            Loader
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-ink">
+            Ready
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Parsed with the agenda schema before route content renders.
           </p>
         </article>
       </div>
