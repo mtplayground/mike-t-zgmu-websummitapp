@@ -1,0 +1,72 @@
+Architecture plan for Issues #1-#6
+
+Project shape
+- Vite + React + TypeScript single-page app.
+- Keep the initial structure shallow and feature-oriented so the first six issues compose cleanly:
+  - `src/main.tsx`: app bootstrap
+  - `src/App.tsx`: top-level app shell
+  - `src/router/`: router setup and route declarations
+  - `src/components/layout/`: shared mobile-first shell components
+  - `src/features/agenda/`: agenda-specific UI, types, context, helpers
+  - `src/features/agenda/components/`: day tabs, filters, search, session list
+  - `src/features/agenda/context/`: agenda loader/provider hooks
+  - `src/features/agenda/data/`: sample JSON file imported by loader
+  - `src/features/agenda/schema/`: runtime validation/schema definitions
+  - `src/styles/`: Tailwind entry CSS and any app-level styling tokens
+
+Shared types
+- Define agenda domain types in one place under `src/features/agenda/types.ts`.
+- Core types should cover:
+  - `AgendaDay`
+  - `AgendaSession`
+  - `AgendaTrack` or session category/tag metadata
+  - `AgendaFilters`
+- Keep schema-derived types aligned with runtime validation so the JSON file, loader, and UI all depend on the same contract.
+
+Issue dependency order
+- Issue #1 is the foundation for all later work.
+- Issue #2 depends on Issue #1 for the app shell and styling pipeline.
+- Issue #3 depends on Issue #1 and should reuse the base layout from Issue #2 where possible.
+- Issue #4 is logically independent of routing, but should land after Issue #1 so files live inside the app structure.
+- Issue #5 depends on Issue #4 because the loader/context should read validated agenda data using the shared schema and types.
+- Issue #6 depends on Issues #2, #3, #4, and #5 because it needs the page layout, route, data contract, and loader state.
+
+Recommended implementation approach by issue
+- Issue #1:
+  - Initialize Vite React TypeScript app.
+  - Add only essential baseline files and scripts.
+- Issue #2:
+  - Install and configure Tailwind CSS.
+  - Build a mobile-first app frame with a header, content container, and spacing primitives that later routes can reuse.
+- Issue #3:
+  - Add React Router.
+  - Define an Agenda route as the primary first screen.
+- Issue #4:
+  - Create an agenda JSON schema plus a small realistic sample dataset.
+  - Prefer runtime validation with `zod` so JSON parsing errors fail clearly during development.
+- Issue #5:
+  - Create `AgendaProvider` and `useAgenda` hook.
+  - Loader should parse sample data, normalize it if needed, expose derived day lists, and centralize loading/error state.
+- Issue #6:
+  - Build the agenda list page from the loader context.
+  - UI state should support active day, text search, and simple filters without duplicating data-fetch logic inside components.
+
+Key design decisions
+- Use feature-first organization for agenda code so future routes can add their own feature folders without reshuffling shared files.
+- Use `zod` for schema validation because it gives both runtime safety and inferred TypeScript types for the sample JSON and context layer.
+- Keep the first loader local and synchronous by importing the sample JSON file instead of adding network fetching early; this keeps Issue #5 simple while preserving a clean upgrade path to remote data later.
+- Put filter/search state in the Agenda page container, not in the provider, unless multiple routes need to share that UI state.
+- Normalize session fields early enough to keep rendering components dumb: each component should consume already-validated session/day data and local UI state.
+- Favor reusable presentational components for `DayTabs`, `AgendaFilters`, `AgendaSearch`, and `SessionList` so Issue #6 stays composable and testable.
+
+Initial dependency set
+- `react`
+- `react-dom`
+- `react-router-dom`
+- `tailwindcss`
+- `zod`
+
+Risks to avoid
+- Do not spread agenda types across route, component, and context files.
+- Do not couple loader state to router concerns.
+- Do not make the sample JSON shape diverge from the schema contract used by the provider and page.
