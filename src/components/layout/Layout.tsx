@@ -1,19 +1,14 @@
-import type { ReactNode } from 'react'
-
-type LayoutProps = {
-  children: ReactNode
-}
+import { NavLink, Outlet } from 'react-router-dom'
 
 const navItems = [
   {
-    href: '#agenda',
+    href: '/',
     label: 'Agenda',
-    description: 'Current tab',
-    isActive: true,
+    description: 'Route ready',
   },
 ] as const
 
-function Layout({ children }: LayoutProps) {
+function Layout() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
       <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col">
@@ -23,12 +18,12 @@ function Layout({ children }: LayoutProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-strong">
                 Web Summit Guide
               </p>
-              <a
-                href="#top"
+              <NavLink
+                to="/"
                 className="font-display text-2xl font-semibold tracking-tight text-ink"
               >
                 SummitNav
-              </a>
+              </NavLink>
             </div>
             <p className="max-w-44 text-right text-sm text-muted sm:max-w-none">
               Mobile-first shell ready for routes and agenda views.
@@ -37,7 +32,7 @@ function Layout({ children }: LayoutProps) {
         </header>
 
         <main className="flex-1 px-4 py-6 pb-28 sm:px-6 sm:py-10 sm:pb-12">
-          {children}
+          <Outlet />
         </main>
 
         <nav
@@ -46,17 +41,24 @@ function Layout({ children }: LayoutProps) {
         >
           <div className="mx-auto flex w-full max-w-md items-center justify-center rounded-2xl border border-line bg-surfaceAlt/90 p-2 shadow-shell sm:ml-0">
             {navItems.map((item) => (
-              <a
+              <NavLink
                 key={item.label}
-                href={item.href}
-                aria-current={item.isActive ? 'page' : undefined}
-                className="flex min-w-36 flex-1 flex-col items-center rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-strong focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                to={item.href}
+                end
+                className={({ isActive }) =>
+                  [
+                    'flex min-w-36 flex-1 flex-col items-center rounded-xl px-4 py-3 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2',
+                    isActive
+                      ? 'bg-brand text-white hover:bg-brand-strong'
+                      : 'bg-white text-ink hover:bg-brand-soft',
+                  ].join(' ')
+                }
               >
                 <span>{item.label}</span>
-                <span className="text-xs font-medium text-white/80">
+                <span className="text-xs font-medium opacity-80">
                   {item.description}
                 </span>
-              </a>
+              </NavLink>
             ))}
           </div>
         </nav>
