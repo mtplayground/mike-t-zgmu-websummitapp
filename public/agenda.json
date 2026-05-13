@@ -1,0 +1,207 @@
+{
+  "conference": {
+    "name": "Web Summit",
+    "city": "Lisbon",
+    "venue": "Altice Arena Campus",
+    "timezone": "Europe/Lisbon"
+  },
+  "days": [
+    {
+      "id": "day-1",
+      "date": "2026-11-11",
+      "label": "Day 1"
+    },
+    {
+      "id": "day-2",
+      "date": "2026-11-12",
+      "label": "Day 2"
+    }
+  ],
+  "tracks": ["AI", "Developer Experience", "Growth", "SaaS", "Sustainability"],
+  "stages": [
+    {
+      "id": "center-stage",
+      "name": "Center Stage",
+      "venue": "Pavilion 1",
+      "color": "#0f9fff"
+    },
+    {
+      "id": "machine-stage",
+      "name": "Machine Stage",
+      "venue": "Pavilion 2",
+      "color": "#12b981"
+    },
+    {
+      "id": "developer-stage",
+      "name": "Developer Stage",
+      "venue": "Pavilion 3",
+      "color": "#f97316"
+    }
+  ],
+  "speakers": [
+    {
+      "id": "speaker-amina-khan",
+      "name": "Amina Khan",
+      "title": "Chief Product Officer",
+      "company": "SignalForge",
+      "avatarUrl": "https://images.websummit.test/amina-khan.jpg"
+    },
+    {
+      "id": "speaker-mateo-silva",
+      "name": "Mateo Silva",
+      "title": "VP of Engineering",
+      "company": "Northstar Cloud",
+      "avatarUrl": "https://images.websummit.test/mateo-silva.jpg"
+    },
+    {
+      "id": "speaker-claire-odonnell",
+      "name": "Claire O'Donnell",
+      "title": "Founder",
+      "company": "GreenLoop",
+      "avatarUrl": "https://images.websummit.test/claire-odonnell.jpg"
+    },
+    {
+      "id": "speaker-sofia-petrov",
+      "name": "Sofia Petrov",
+      "title": "Head of AI Platforms",
+      "company": "Orbital Labs",
+      "avatarUrl": "https://images.websummit.test/sofia-petrov.jpg"
+    },
+    {
+      "id": "speaker-luca-moreau",
+      "name": "Luca Moreau",
+      "title": "Staff Developer Advocate",
+      "company": "Stackline",
+      "avatarUrl": "https://images.websummit.test/luca-moreau.jpg"
+    },
+    {
+      "id": "speaker-jules-mensah",
+      "name": "Jules Mensah",
+      "title": "Growth Lead",
+      "company": "Flux Commerce",
+      "avatarUrl": "https://images.websummit.test/jules-mensah.jpg"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "session-opening-ai-everywhere",
+      "title": "AI Everywhere: The 2027 Product Map",
+      "description": "How product teams are moving from copilots to core workflow automation.",
+      "dayId": "day-1",
+      "track": "AI",
+      "stageId": "center-stage",
+      "speakerIds": ["speaker-amina-khan", "speaker-sofia-petrov"],
+      "startsAt": "2026-11-11T09:00:00+00:00",
+      "endsAt": "2026-11-11T09:40:00+00:00",
+      "format": "Keynote"
+    },
+    {
+      "id": "session-devx-toolchains",
+      "title": "Toolchains That Keep Shipping Fast",
+      "description": "A practical look at frontend and platform standards that reduce release friction.",
+      "dayId": "day-1",
+      "track": "Developer Experience",
+      "stageId": "developer-stage",
+      "speakerIds": ["speaker-mateo-silva", "speaker-luca-moreau"],
+      "startsAt": "2026-11-11T10:00:00+00:00",
+      "endsAt": "2026-11-11T10:30:00+00:00",
+      "format": "Panel"
+    },
+    {
+      "id": "session-growth-retention",
+      "title": "Retention Before Acquisition",
+      "description": "Why post-signup activation is still the sharpest lever in SaaS growth.",
+      "dayId": "day-1",
+      "track": "Growth",
+      "stageId": "center-stage",
+      "speakerIds": ["speaker-jules-mensah"],
+      "startsAt": "2026-11-11T11:00:00+00:00",
+      "endsAt": "2026-11-11T11:25:00+00:00",
+      "format": "Talk"
+    },
+    {
+      "id": "session-climate-data-stack",
+      "title": "Building Climate Products on Messy Data",
+      "description": "Patterns for trustworthy dashboards, forecasts, and sustainability tooling.",
+      "dayId": "day-1",
+      "track": "Sustainability",
+      "stageId": "machine-stage",
+      "speakerIds": ["speaker-claire-odonnell"],
+      "startsAt": "2026-11-11T12:00:00+00:00",
+      "endsAt": "2026-11-11T12:30:00+00:00",
+      "format": "Talk"
+    },
+    {
+      "id": "session-ml-platforms",
+      "title": "From Notebook to Platform: ML Teams at Scale",
+      "description": "How platform teams are standardizing data, evaluation, and deployment loops.",
+      "dayId": "day-1",
+      "track": "AI",
+      "stageId": "machine-stage",
+      "speakerIds": ["speaker-sofia-petrov", "speaker-mateo-silva"],
+      "startsAt": "2026-11-11T14:00:00+00:00",
+      "endsAt": "2026-11-11T14:45:00+00:00",
+      "format": "Workshop"
+    },
+    {
+      "id": "session-agents-and-ops",
+      "title": "AI Agents Need Better Operational Guardrails",
+      "description": "Observability, permissions, and incident response for agentic systems in production.",
+      "dayId": "day-2",
+      "track": "AI",
+      "stageId": "center-stage",
+      "speakerIds": ["speaker-amina-khan", "speaker-luca-moreau"],
+      "startsAt": "2026-11-12T09:15:00+00:00",
+      "endsAt": "2026-11-12T09:50:00+00:00",
+      "format": "Panel"
+    },
+    {
+      "id": "session-saas-pricing",
+      "title": "Pricing as a Product Surface",
+      "description": "How pricing experiments can improve adoption without eroding trust.",
+      "dayId": "day-2",
+      "track": "SaaS",
+      "stageId": "center-stage",
+      "speakerIds": ["speaker-jules-mensah"],
+      "startsAt": "2026-11-12T10:30:00+00:00",
+      "endsAt": "2026-11-12T10:55:00+00:00",
+      "format": "Talk"
+    },
+    {
+      "id": "session-developer-onboarding",
+      "title": "The First 30 Minutes of Developer Onboarding",
+      "description": "Designing docs, CLIs, and sandboxes that shorten time to first success.",
+      "dayId": "day-2",
+      "track": "Developer Experience",
+      "stageId": "developer-stage",
+      "speakerIds": ["speaker-luca-moreau"],
+      "startsAt": "2026-11-12T11:15:00+00:00",
+      "endsAt": "2026-11-12T11:40:00+00:00",
+      "format": "Talk"
+    },
+    {
+      "id": "session-sustainable-growth",
+      "title": "Growth Loops for Climate-Conscious Brands",
+      "description": "How sustainability narratives convert when the product backs them up.",
+      "dayId": "day-2",
+      "track": "Growth",
+      "stageId": "machine-stage",
+      "speakerIds": ["speaker-claire-odonnell", "speaker-jules-mensah"],
+      "startsAt": "2026-11-12T13:00:00+00:00",
+      "endsAt": "2026-11-12T13:35:00+00:00",
+      "format": "Panel"
+    },
+    {
+      "id": "session-shipping-platforms",
+      "title": "Shipping Platform Change Without Slowing Teams",
+      "description": "Tactics for evolving shared infrastructure while preserving product velocity.",
+      "dayId": "day-2",
+      "track": "Developer Experience",
+      "stageId": "developer-stage",
+      "speakerIds": ["speaker-mateo-silva"],
+      "startsAt": "2026-11-12T14:15:00+00:00",
+      "endsAt": "2026-11-12T14:45:00+00:00",
+      "format": "Talk"
+    }
+  ]
+}
